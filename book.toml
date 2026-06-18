@@ -1,14 +1,16 @@
 [book]
-title = "2025 CompClub Spring Workshops Handbook"
-author = "2025 CompClub Internals & SecSoc Education Team"
+title = "Workshop Handbook"
+author = "Your Organization"
 language = "en"
-
+description = "A template for workshop handbooks built with mdBook."
 
 [build]
 build-dir = "book"
 
 [output.html]
-default-theme = "pirate"
+default-theme = "coal"
+site-url = "/YOUR-REPO-NAME/"
+git-repository-url = "https://github.com/YOUR-ORG/YOUR-REPO-NAME"
 additional-css = ["theme/custom.css"]
 
 [preprocessor.callouts]
