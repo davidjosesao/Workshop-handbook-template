@@ -8,7 +8,7 @@ description = "A CompClub template for workshop handbooks built with mdBook."
 build-dir = "book"
 
 [output.html]
-default-theme = "workshop"
+default-theme = "coal"
 site-url = "/Workshop-handbook-template/"
 git-repository-url = "https://github.com/davidjosesao/Workshop-handbook-template"
 additional-css = ["theme/custom.css"]
