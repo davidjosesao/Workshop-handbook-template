@@ -31,10 +31,8 @@ jobs:
 
       - name: Install mdBook & mdbook-callouts
         run: |
-          # mdbook-callouts 0.3.x requires mdBook 0.5.x (authors field in book.toml).
-          # Pin 0.4.40 + 0.2.2 to match the current book.toml schema.
-          cargo install mdbook --locked --version 0.4.40
-          cargo install mdbook-callouts --locked --version 0.2.2
+          cargo install mdbook --locked --version 0.5.3
+          cargo install mdbook-callouts --locked --version 0.3.0
 
       - name: Setup Pages
         id: pages
