@@ -26,7 +26,8 @@ jobs:
 
       - name: Install Rust
         run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -sSf -- -y
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o /tmp/rustup-init.sh
+          sh /tmp/rustup-init.sh -y
           echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
 
       - name: Install mdBook & mdbook-callouts
