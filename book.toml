@@ -1,16 +1,16 @@
 [book]
 title = "Workshop Handbook"
-author = "Your Organization"
+author = "CompClub"
 language = "en"
-description = "A template for workshop handbooks built with mdBook."
+description = "A CompClub template for workshop handbooks built with mdBook."
 
 [build]
 build-dir = "book"
 
 [output.html]
 default-theme = "coal"
-site-url = "/YOUR-REPO-NAME/"
-git-repository-url = "https://github.com/YOUR-ORG/YOUR-REPO-NAME"
+site-url = "/Workshop-handbook-template/"
+git-repository-url = "https://github.com/davidjosesao/Workshop-handbook-template"
 additional-css = ["theme/custom.css"]
 
 [preprocessor.callouts]
