@@ -9,7 +9,12 @@
     --page-padding: 15px;
     --content-max-width: 750px;
     --menu-bar-height: 50px;
+    /* Pick a custom font fmily for the entire page here */
+    /* Defaults the standard mdbook font family */
+    --custom-font-family: "Open Sans", sans-serif;
+    /* Pick the font used in code blocks here */
     --mono-font: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", monospace, monospace;
+    
     --code-font-size: 0.875em; /* please adjust the ace font size accordingly in editor.js */
     --searchbar-margin-block-start: 5px;
 
@@ -23,6 +28,12 @@
 /* Custom Theme for your Workshop! */
 
 .workshop {
+    /* These fonts will only be active when the workshop theme is enabled */
+    /* Set a custom font-family for your workshop here! */
+    --custom-font-family: "Papyrus";
+    /* Pick a custom monospace font for your code blocks here !*/
+    --mono-font: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", monospace, monospace;
+
     --bg: hsl(210, 25%, 8%);
     --fg: #c5c5c5;
 
