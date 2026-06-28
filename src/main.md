@@ -30,7 +30,13 @@ This repository is a **CompClub template** for workshop handbooks. Fork it, repl
 
 ## Examples
 
-See the **Examples** section in the sidebar:
+Use the **Workshop page templates** section as a starting point for new content:
+
+- **[Guided workshop](templates/guided-workshop.md)** — for explaining a topic and walking through an activity
+- **[CTF challenge](templates/ctf-challenge.md)** — for challenges, puzzles, or investigation tasks
+- **[Quick reference](templates/quick-reference.md)** — for useful commands, definitions, and common errors
+
+The **Examples** section shows how the extra features work:
 
 - **[Callouts](examples/callouts.md)** — styled note boxes (`INFO`, `TIP`, `WARNING`, etc.)
 - **[Answer widgets](examples/answer-widget.md)** — interactive check-your-answer boxes for exercises

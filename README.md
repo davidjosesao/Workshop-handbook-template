@@ -7,6 +7,7 @@ Maintained by **CompClub** as a starting point for workshop handbooks. Fork it, 
 ## What's included
 
 - **Starter chapters** — introduction plus example pages under `src/examples/`
+- **Workshop page templates** — guided workshop, CTF challenge, and quick-reference pages under `src/templates/`
 - **Callout examples** — `src/examples/callouts.md` (INFO, TIP, WARNING, etc.)
 - **Answer widget demo** — `src/examples/answer-widget.md` (interactive check-your-answer pattern)
 - **Neutral default theme** — built-in `coal` theme with minimal `theme/custom.css`
@@ -23,11 +24,11 @@ cargo install mdbook mdbook-callouts
 Pin versions for reproducible builds (optional):
 
 ```bash
-cargo install mdbook --locked --version 0.4.40
+cargo install mdbook --locked --version 0.5.3
 cargo install mdbook-callouts --locked --version 0.3.0
 ```
 
-> **Note:** `mdbook-callouts` 0.3.x requires mdBook 0.5.x. If you use mdBook 0.4.x, install `mdbook-callouts` 0.2.2 instead.
+> **Note:** `mdbook-callouts` 0.3.x requires mdBook 0.5.x.
 
 ## Local development
 
@@ -62,6 +63,8 @@ None of this is required — pick what fits your workshop.
 1. Create a `.md` file under `src/`.
 2. Link it in `src/SUMMARY.md`.
 3. Run `mdbook serve --open` to preview.
+
+For a faster start, copy a page from `src/templates/`, rename it, and replace the bracketed placeholder content.
 
 ### Changing theme
 
