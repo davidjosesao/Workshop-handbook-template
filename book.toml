@@ -1,6 +1,6 @@
 [book]
 title = "Workshop Handbook"
-author = "CompClub"
+authors = ["CompClub"]
 language = "en"
 description = "A CompClub template for workshop handbooks built with mdBook."
 
