@@ -7,6 +7,8 @@ Use an answer widget when you want readers to type a response and check it inlin
 
 ## Example
 
+<quiz-question q="testing custom question tag (answer same a question)" a="testing custom question tag" points="1"></quiz-question>
+
 **Question:** Which organisation maintains this handbook template?
 
 <div class="answer-box">
