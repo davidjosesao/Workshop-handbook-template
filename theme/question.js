@@ -3,6 +3,8 @@
 
   const correctAnswerText = "✓ Correct Answer!";
   const incorrectAnswerText = "✗ Incorrect. Try again!";
+  // account for no double points
+  const alreadyAnsweredText = "✓ Already answered";
 
   // Create an instance of a custom question tag template
   customElements.define(
@@ -34,9 +36,10 @@
   /**
    * Find all questions that have already been answered already
    */
-  function awardedIds() {
-    // TODO
-  }
+  // Not needed anymore
+  // function awardedIds() {
+  //   // TODO
+  // }
 
   /**
    * Normalises an answer string: converts it to lowercase + trim
@@ -52,8 +55,13 @@
     questionText,
     correctAnswer,
     points,
-    alreadyAwarded,
+    // alreadyAwarded, removed ts because point system accounts for it
   ) {
+
+    const alreadyAwarded = window.PointsSystem
+    ? window.PointsSystem.has(id)
+    : false;
+
     const widget = document.createElement("div");
     widget.setAttribute("id", id);
     widget.setAttribute("aria-label", "Question");
@@ -101,17 +109,37 @@
     widget.appendChild(feedback);
 
     // Logic
+
+    function lockWidget(message) {
+      input.disabled = true;
+      btn.disabled = true;
+      feedback.className = "correct";
+      feedback.textContent = message;
+    }
+
+    // lock immediately if already answered in previously
+    if (alreadyAwarded) {
+      lockWidget(alreadyAnsweredText);
+    }
+
     function checkAnswer() {
       const rawAnswer = input.value;
       const isCorrect = normalise(rawAnswer) === normalise(correctAnswer);
 
       if (isCorrect) {
-        feedback.className = "correct";
-        feedback.textContent = correctAnswerText;
+        // changed lines here
+        // added point system logic
+        const result = window.PointsSystem
+        ? window.PointsSystem.add(points, id)
+        : { applied: true };
 
-        // TODO
-        // check if question has already been answered
-        // If not dispatch points to tracker
+        if (result.applied) {
+          feedback.className = "correct";
+          feedback.textContent = correctAnswerText;
+          lockWidget(correctAnswerText);
+        } else {
+          lockWidget(alreadyAnsweredText);
+        }
       } else {
         feedback.className = "incorrect";
         feedback.textContent = incorrectAnswerText;
