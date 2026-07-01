@@ -12,6 +12,6 @@ default-theme = "coal"
 site-url = "/Workshop-handbook-template/"
 git-repository-url = "https://github.com/davidjosesao/Workshop-handbook-template"
 additional-css = ["theme/custom.css"]
-additional-js = ["theme/question.js"]
+additional-js = ["theme/question.js", "theme/points.js"]
 
 [preprocessor.callouts]

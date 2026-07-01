@@ -1,8 +1,10 @@
 (function () {
   "use strict";
 
-  const correctAnswerText = "✓ Correct Answer!";
-  const incorrectAnswerText = "✗ Incorrect. Try again!";
+  const correctAnswerMsg = "✓ Correct Answer!";
+  const incorrectAnswerMsg = "✗ Incorrect. Try again!";
+  // account for no double points
+  const alreadyAnsweredMsg = "✓ Already answered";
 
   // Create an instance of a custom question tag template
   customElements.define(
@@ -20,7 +22,7 @@
   );
 
   /**
-   * Returns an id for a question element. Assumes that no two questions are
+   * Returns a hashed id for a question element. Assumes that no two questions are
    * identical to perserve uniqueness.
    *
    * @param {string} questionText - the provided question text
@@ -28,14 +30,14 @@
    * @returns {string} - the created id
    */
   function createId(questionText, answerText) {
-    return "q-" + questionText.trim() + "::" + answerText.trim();
-  }
-
-  /**
-   * Find all questions that have already been answered already
-   */
-  function awardedIds() {
-    // TODO
+    const combined = questionText.trim() + "::" + answerText.trim();
+    let hash = 0;
+    // Create the hash
+    for (let i = 0; i < combined.length; i++) {
+      hash = (Math.imul(31, hash)) + combined.charCodeAt(i) | 0;
+    }
+    // Convert hash to string
+    return "q-" + Math.abs(hash).toString(36);
   }
 
   /**
@@ -47,13 +49,25 @@
     return s.toLowerCase().trim();
   }
 
+  /**
+   * Builds a DOM for the question tag
+   * @param {string} id - the id of question tag
+   * @param {string} questionText - the provided question
+   * @param {string} correctAnswer - the provided correct answer
+   * @param {number} points - the provided points
+   * @returns {Element} - the newly created widget
+   */
   function buildWidget(
     id,
     questionText,
     correctAnswer,
     points,
-    alreadyAwarded,
   ) {
+
+    const alreadyAwarded = window.PointsSystem
+    ? window.PointsSystem.has(id)
+    : false;
+
     const widget = document.createElement("div");
     widget.setAttribute("id", id);
     widget.setAttribute("aria-label", "Question");
@@ -101,20 +115,39 @@
     widget.appendChild(feedback);
 
     // Logic
+    function lockWidget(message) {
+      input.disabled = true;
+      btn.disabled = true;
+      feedback.className = "correct";
+      feedback.textContent = message;
+    }
+
+    // lock immediately if already answered in previously
+    if (alreadyAwarded) {
+      lockWidget(alreadyAnsweredText);
+    }
+
     function checkAnswer() {
       const rawAnswer = input.value;
       const isCorrect = normalise(rawAnswer) === normalise(correctAnswer);
 
       if (isCorrect) {
-        feedback.className = "correct";
-        feedback.textContent = correctAnswerText;
+        // changed lines here
+        // added point system logic
+        const result = window.PointsSystem
+        ? window.PointsSystem.add(points, id)
+        : { applied: true };
 
-        // TODO
-        // check if question has already been answered
-        // If not dispatch points to tracker
+        if (result.applied) {
+          feedback.className = "correct";
+          feedback.textContent = correctAnswerMsg;
+          lockWidget(correctAnswerMsg);
+        } else {
+          lockWidget(alreadyAnsweredMsg);
+        }
       } else {
         feedback.className = "incorrect";
-        feedback.textContent = incorrectAnswerText;
+        feedback.textContent = incorrectAnswerMsg;
       }
     }
 
