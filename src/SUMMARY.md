@@ -7,3 +7,4 @@
   - [Quick reference](templates/quick-reference.md)
 - [Examples](examples/callouts.md)
   - [Answer widgets](examples/answer-widget.md)
+- [Progress](progress.md)
