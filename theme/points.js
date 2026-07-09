@@ -65,6 +65,25 @@
     return { total: state.total, applied: true };
   };
 
+  // remove points
+   const remove = (amount, id) => {
+    amount = Number(amount) || 0;
+    id = String(id);
+
+    if (!state.seen.has(id)) {
+      return { total: state.total, applied: false };
+    }
+
+    state.seen.delete(id);
+    saveSeen();
+    state.total -= amount;
+    saveTotal();
+    notify(-amount, id);
+    updateWidget();
+
+    return { total: state.total, applied: true };
+  };
+
   // just returns the current total
   const get = () => state.total;
   // returns true/false for if a given question id has already been ansowered
@@ -166,5 +185,5 @@
     buildWidget();
   }
 
-  window.PointsSystem = { add, get, has, reset, subscribe };
+  window.PointsSystem = { add, remove, get, has, reset, subscribe };
 })();
