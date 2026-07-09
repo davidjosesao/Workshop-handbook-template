@@ -42,6 +42,14 @@ jobs:
       - name: Build with mdBook
         run: mdbook build
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate task manifest
+        run: node scripts/build-manifest.js
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

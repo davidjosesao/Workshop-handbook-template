@@ -124,7 +124,7 @@
 
     // lock immediately if already answered in previously
     if (alreadyAwarded) {
-      lockWidget(alreadyAnsweredText);
+      lockWidget(alreadyAnsweredMsg);
     }
 
     function checkAnswer() {

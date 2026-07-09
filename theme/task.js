@@ -1,35 +1,15 @@
 (function () {
   "use strict";
 
-  const STORAGE_TASKS = 'mdbook-tasks:completed';
-
-  // reads the set of completed task ids from localStorage and returns them as a set
-  const loadCompletedTasks = () => {
-    try {
-      const raw = localStorage.getItem(STORAGE_TASKS);
-      return new Set(raw ? JSON.parse(raw) : []);
-    } catch (e) {
-      return new Set();
-    }
-  };
-
-  // writes the completed tasks Set back to localStorage
-  const saveCompletedTasks = (completedSet) => {
-    localStorage.setItem(STORAGE_TASKS, JSON.stringify(Array.from(completedSet)));
-  };
-
-  const completed = loadCompletedTasks();
-
   customElements.define(
     "task-item",
     class extends HTMLElement {
-      // built-in browser lifecycle method that fires automatically when the custom element is inserted into the DOM
       connectedCallback() {
-        const id     = this.getAttribute("id");
+        const id = this.getAttribute("id");
         const points = parseInt(this.getAttribute("points") || "0", 10);
         const description = this.innerHTML;
 
-        const isDone = completed.has(id);
+        const isDone = window.PointsSystem ? window.PointsSystem.has(id) : false;
 
         const wrapper = document.createElement("div");
         wrapper.className = "task-item";
@@ -59,14 +39,12 @@
         wrapper.appendChild(label);
 
         checkbox.addEventListener("change", () => {
+          if (!window.PointsSystem) return;
+
           if (checkbox.checked) {
-            completed.add(id);
-            saveCompletedTasks(completed);
-            window.PointsSystem?.add(points, id);
+            window.PointsSystem.add(points, id);
           } else {
-            completed.delete(id);
-            saveCompletedTasks(completed);
-            window.PointsSystem?.remove(points, id);
+            window.PointsSystem.remove(points, id);
           }
         });
 
