@@ -90,7 +90,7 @@ Make a file called `chat.py`.
 import os
 import requests
 
-API_KEY = "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"
+API_KEY = xyz
 
 response = requests.post(
     "https://api.anthropic.com/v1/messages",
@@ -152,7 +152,7 @@ that takes a list of messages and returns the reply text:
 import os
 import requests
 
-API_KEY = "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"
+API_KEY = xyz
 
 def get_ai_reply(messages):
     response = requests.post(
