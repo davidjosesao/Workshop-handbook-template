@@ -59,7 +59,7 @@ It falls straight into the `else` section of the code block.
 
 ## 2. Setup
 
-Open Vs code and familiarise yourself with the file structure
+Open VS code and familiarise yourself with the file structure
 
 ## 3. Your First Real AI Reply
 
