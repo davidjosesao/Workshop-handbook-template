@@ -89,8 +89,11 @@ Make a file called `chat.py`.
 ```python
 import os
 import requests
+from dotenv import load_dotenv
 
-API_KEY = xyz
+load_dotenv()
+
+API_KEY = os.environ["API_KEY"]
 
 response = requests.post(
     "https://api.anthropic.com/v1/messages",
@@ -151,8 +154,11 @@ that takes a list of messages and returns the reply text:
 ```python
 import os
 import requests
+from dotenv import load_dotenv
 
-API_KEY = xyz
+load_dotenv()
+
+API_KEY = os.environ["API_KEY"]
 
 def get_ai_reply(messages):
     response = requests.post(
