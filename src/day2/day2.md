@@ -393,13 +393,9 @@ def chat():
     return jsonify({"reply": reply})
 ```
 
-Save, refresh the website, and test.
+Save and refresh the website.
 
-### ✅ Checkpoint
-
-**Real AI replies should work on the website.** Ask it anything.
-
-But now try the name test again:
+Now try the name test again:
 
 ```
 You: My name is <insert name>.
