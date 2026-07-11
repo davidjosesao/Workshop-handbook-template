@@ -458,8 +458,8 @@ Play around with different personalities you can give the bot.
 
 ## 14. Open ended tasks
 
-- You can refer to Claude's API key website: https://platform.claude.com/docs/en/api/overview
-- Play around with different hyperparameters
+- You can refer to Claude's API key website: [https://platform.claude.com/docs/en/api/overview](https://platform.claude.com/docs/en/api/overview)
+- Play around with different hyperparameters (just note that all models after Claude Opus 4.6 don't support this. You can look [here](https://platform.claude.com/docs/en/api/cli/completions/create) for how to do this)
 - Try implementing some non AI commands to the website (maybe something like ./clear which resets the chat history)
 - Currently our bot has no way to retain memory between restarts. We can setup persistent memory by saving our chat history to a file, and then reading that file on server startup.
 - Try and implement a maximum size for the memory of the bot, and automatic trimming when conversations exceed this (you could even add a prompt saying that the users should start a new session)
