@@ -12,6 +12,6 @@ default-theme = "coal"
 site-url = "/2026-winter-workshop-handbook/"
 git-repository-url = "https://github.com/UNSW-CompClub/2026-winter-workshop-handbook"
 additional-css = ["theme/custom.css"]
-additional-js = ["theme/question.js", "theme/points.js"]
+additional-js = ["theme/question.js", "theme/points.js", "reload-check.js"]
 
 [preprocessor.callouts]
