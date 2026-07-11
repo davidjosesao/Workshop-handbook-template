@@ -469,7 +469,7 @@ You've built a working chatbot. Now make it _yours_. None of this actiities are 
 
 ## Task 1 · Explore the API 🟢
 
-**Goal:** Understand what knobs the API gives you, and feel how each one changes Claude's replies.
+**Goal:** Understand what knobs the API gives you, and feel how each one changes our chatbots's replies.
 
 The official reference is your friend here:
 
@@ -478,12 +478,12 @@ The official reference is your friend here:
 
 Right now your request only sends `model`, `max_tokens`, `system`, and `messages`. Try adding and adjusting these in the `json={...}` block of `get_ai_reply`:
 
-| Parameter        | What it does                           | Try                                                                    |
-| ---------------- | -------------------------------------- | ---------------------------------------------------------------------- |
-| `max_tokens`     | Caps how long the reply can be         | Set it very low (e.g. `30`) and watch replies get cut off mid-sentence |
-| `temperature`    | Randomness / "creativity", `0.0`–`1.0` | Ask the same question at `0.0` vs `1.0` a few times and compare        |
-| `system`         | Sets Claude's role and personality     | Rewrite it as a pirate, a strict maths tutor, a rubber duck…           |
-| `stop_sequences` | Text that makes Claude stop early      | Give it `["\n\n"]` and see what happens                                |
+| Parameter        | What it does                             | Try                                                                    |
+| ---------------- | ---------------------------------------- | ---------------------------------------------------------------------- |
+| `max_tokens`     | Caps how long the reply can be           | Set it very low (e.g. `30`) and watch replies get cut off mid sentence |
+| `temperature`    | Randomness / "creativity", `0.0`–`1.0`   | Ask the same question at `0.0` vs `1.0` a few times and compare        |
+| `system`         | Sets the chatbots's role and personality | Rewrite it as a pirate, or even compclub mentor                        |
+| `stop_sequences` | Text that makes the chatbot stop early   | Give it `["\n\n"]` and see what happens                                |
 
 **Done when…** you can explain to a mentor in one sentence each, what `temperature`, `max_tokens`, and the `system` parameters do
 
